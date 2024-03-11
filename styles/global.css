@@ -69,9 +69,9 @@ section.container > header {
   position: relative;
 }
 .card-header > img {
-  height: 190px;
+  height: 208px;
   width: 147px;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: 0.3s ease-out;
 }
 .card-link {
@@ -81,7 +81,6 @@ section.container > header {
   width: 100%;
   top: 0;
   padding: 12px;
-  z-index: 5;
   overflow: hidden;
   background: -webkit-radial-gradient(
     center,
@@ -89,7 +88,7 @@ section.container > header {
     rgb(33, 50, 69, 32%) 10%,
     rgb(33, 50, 69, 72%) 72%
   );
-  border-radius: 5px;
+  border-radius: 6px;
   transition: 0.3s ease-out;
 }
 .card-header:hover .card-link {
@@ -129,6 +128,7 @@ div.card-link > div:nth-child(2) > button:hover {
 .text-paragraph-sm {
   font-size: 12px;
 }
+
 .text-paragraph {
   font-size: 14px;
 }
@@ -157,6 +157,11 @@ div.card-link > div:nth-child(2) > button:hover {
 .btn.btn-sm {
   min-width: 100px;
   padding: 6px 12px;
+}
+.btn.btn-md {
+  min-width: 100px;
+  padding: 12px;
+  border-radius: 12px !important;
 }
 
 .add-icon {
@@ -209,6 +214,14 @@ div.card-link > div:nth-child(2) > button:hover {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(115%)
     contrast(100%);
 }
+.xmark-icon {
+  background-image: url(../assets/icon/xmark.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
 
 div.card-body > p,
 div.card-body > h3 {
@@ -217,11 +230,13 @@ div.card-body > h3 {
 
 h1,
 h2,
-h3 {
+h3,
+label {
   font-family: "Raleway", sans-serif;
 }
 p,
-span {
+span,
+input {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
@@ -269,13 +284,108 @@ footer nav li > button {
   padding: 7px 11px;
   border-radius: 10px;
 }
-footer nav li > button:hover {
+footer nav li > button:hover,
+.bottomMenuActive {
   background-color: var(--white);
   transition: 0.3s ease;
 }
+
 footer nav ul li > button {
   display: flex;
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+/* modal-section */
+.layer_overlay {
+  background-color: rgba(36, 43, 51, 0.6);
+  backdrop-filter: blur(2px);
+  /* display: block; */
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+}
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.overlay-active {
+  display: block;
+  animation: modal-appear 0.1s ease-in-out forwards;
+}
+
+div.modal-content > header > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 24px;
+}
+
+/* form */
+.modal-content {
+  background-color: var(--white);
+  width: 533px;
+  height: 589px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  z-index: 999;
+}
+.modal-content {
+  padding: 32px;
+}
+form {
+  padding: 20px 0;
+}
+form > button {
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 12px;
+  width: 100%;
+  padding: 14px;
+}
+fieldset {
+  border: none;
+  margin: 24px 0 18px;
+}
+fieldset:first-child > label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: var(--tertiary);
+}
+fieldset:first-child > label > input {
+  padding: 0 12px;
+  height: 42px;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 12px;
+  border: 1.5px solid #cbd0d8;
+  background-color: var(--white);
+}
+fieldset:first-child > label > input::placeholder {
+  color: #cbd0d8;
+}
+fieldset:first-child > label > input:focus {
+  outline: 1.5px solid var(--primary);
+}
+
+fieldset:nth-child(2) > label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+  vertical-align: middle;
+  width: 14px;
+  height: 14px;
 }
