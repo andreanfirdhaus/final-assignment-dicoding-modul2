@@ -94,15 +94,14 @@ section.container > header {
 .card-header:hover .card-link {
   display: flex;
   flex-direction: column;
+  align-items: end;
   justify-content: space-between;
   transition: 0.3s ease-out;
-}
-div.card-link > div:first-child {
-  justify-content: end;
 }
 div.card-link > div {
   display: flex;
   gap: 8px;
+  width: 100%;
 }
 div.card-link > div:nth-child(2) > button:hover {
   border: 1.8px solid rgb(33, 50, 69, 72%);
@@ -117,6 +116,9 @@ div.card-link > div:nth-child(2) > button:hover {
 }
 .flex-col-100 {
   flex-direction: column;
+}
+.gap-2 {
+  gap: 4px;
 }
 
 .text-24px {
@@ -148,7 +150,9 @@ div.card-link > div:nth-child(2) > button:hover {
 .text-secondary {
   color: var(--tertiary);
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 .btn {
   border: 1.8px solid var(--white);
   border-radius: 8px;
@@ -223,7 +227,7 @@ div.card-link > div:nth-child(2) > button:hover {
   height: 16px;
 }
 
-div.card-body > p,
+div.card-body > div,
 div.card-body > h3 {
   margin-top: 8px;
 }
