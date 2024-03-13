@@ -106,8 +106,8 @@ function addBook() {
     const imageUrl = isUrl ? imageUrlInput : './assets/img/img404.jpg';
 
     const generatedID = generateId();
-    const object = generateObjectBook(generatedID, title, author, year, imageUrl, false)
-    books.push(object);
+    const bookObject = generateObjectBook(generatedID, title, author, year, imageUrl, false)
+    books.push(bookObject);
 
     document.dispatchEvent(new Event(RENDER_EVENT));
 }
@@ -129,48 +129,110 @@ function generateObjectBook(id, title, author, year, imageUrl, isCompleted) {
 }
 
 // form 2 make books
-function makeBook(object) {
+function makeBook(bookObject) {
     const imageUrl = document.createElement('img');
-    imageUrl.setAttribute('src', object.imageUrl);
-    imageUrl.setAttribute('alt', object.title);
-
+    imageUrl.setAttribute('src', bookObject.imageUrl);
+    imageUrl.setAttribute('alt', bookObject.title);
 
     const title = document.createElement('h3');
     title.classList.add('text-paragraph', 'font-bold', 'text-primary', "capitalize");
-    title.innerText = object.title;
+    title.innerText = bookObject.title;
 
     const author = document.createElement('p');
     author.classList.add("text-paragraph-sm", "text-secondary", "capitalize")
-    author.innerText = object.author;
+    author.innerText = bookObject.author;
 
     const year = document.createElement('p');
     year.classList.add("text-paragraph-sm", "text-secondary")
-    year.innerText = object.year;
+    year.innerText = bookObject.year;
 
-    const paragraphContainer = document.createElement('div');
-    paragraphContainer.classList.add("flex", "gap-2");
-    paragraphContainer.append(author, year);
-    console.log("container paragraph", paragraphContainer);
+    const deleteButton = document.createElement('button');
+    deleteButton.innerHTML = '<i class="trash-icon"></i>';
 
-    const cardHeader = document.createElement('div');
-    cardHeader.classList.add('card-header');
-    cardHeader.append(imageUrl);
-    console.log('element dari card-header', cardHeader);
+    const readButton = document.createElement('button');
+    readButton.classList.add('btn', 'btn-sm', 'text-white');
+    readButton.textContent = 'Read';
+
+    const markAsReadButton = document.createElement('button');
+    markAsReadButton.classList.add('btn', 'btn-sm', 'text-white');
+    markAsReadButton.textContent = 'Mark as read';
+
+    const markAsUnreadButton = document.createElement('button');
+    markAsUnreadButton.classList.add('btn', 'btn-sm', 'text-white');
+    markAsUnreadButton.textContent = 'Mark as Unread';
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('flex', 'flex-col-100');
+
+    const authorYearContainer = document.createElement('div');
+    authorYearContainer.classList.add("flex", "gap-2");
+    authorYearContainer.append(author, year);
+    console.log("container paragraph", authorYearContainer);
+
+    const cardLink = document.createElement('div');
+    cardLink.classList.add('card-link');
+    cardLink.append(deleteButton, buttonContainer);
 
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
-    cardBody.append(title, paragraphContainer);
+    cardBody.append(title, authorYearContainer);
     console.log('element dari card-body', cardBody);
+
+    const cardHeader = document.createElement('div');
+    cardHeader.classList.add('card-header');
+    cardHeader.append(imageUrl, cardLink);
+    console.log('element dari card-header', cardHeader);
 
     const cardContainer = document.createElement('article');
     cardContainer.classList.add('card');
     cardContainer.append(cardHeader, cardBody);
-    cardContainer.setAttribute('id', `bookId-${object.id}`);
+    cardContainer.setAttribute('id', `book-${bookObject.id}`);
     console.log('element dari article', cardContainer)
+
+
+    // isCompleted is true
+    if (books.isCompleted) {
+        console.log('ini adlaah buku ketika SUDAH selesai dibaca');
+
+        buttonContainer.append(readButton, markAsUnreadButton);
+
+        // markAsUnreadButton.addEventListener('click', function(){
+
+        // })
+
+        deleteButton.addEventListener('click', function () {
+            removeBookFromCompleted(books.id);
+        })
+    } else {
+        console.log('ini adlaah buku ketika BELUM selesai dibaca');
+
+        buttonContainer.append(readButton, markAsReadButton);
+
+        markAsReadButton.addEventListener('click', function () {
+            markAsRead(books.id);
+        })
+    }
 
     return cardContainer;
 }
 
+function markAsRead(bookId) {
+    const bookTarget = findBook(bookId);
+
+    if (bookTarget == null) return;
+
+    bookTarget.isCompleted = true;
+    document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+function findBook(bookId) {
+    for (const bookItem of books) {
+        if (bookItem.id === bookId) {
+            return bookItem;
+        }
+    }
+    return null;
+}
 
 const books = [];
 const RENDER_EVENT = "render-book";
@@ -185,12 +247,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener(RENDER_EVENT, function () {
     console.log(books);
+    // Add a book mark as read
+    // addBookmarkAsRead
 
-    const uncompletedTODOList = document.getElementById('books-library');
-    uncompletedTODOList.innerHTML = '';
+    // const markAsRead = document.getElementById('books');
+    // markAsRead.innerHTML = '';
+
+    const addBooksInLibrary = document.getElementById('books-library');
+    addBooksInLibrary.innerHTML = '';
 
     for (const bookItem of books) {
         const booksLibrary = makeBook(bookItem);
-        uncompletedTODOList.append(booksLibrary);
+
+        if (!bookItem.isCompleted) {
+            addBooksInLibrary.append(booksLibrary);
+        }
     }
 });
