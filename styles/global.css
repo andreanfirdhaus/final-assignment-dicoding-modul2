@@ -118,6 +118,9 @@ div.card-link > div:nth-child(2) > button:hover {
 .flex-col-100 {
   flex-direction: column;
 }
+.gap-2 {
+  gap: 4px;
+}
 
 .text-24px {
   font-size: 28px;
@@ -148,7 +151,9 @@ div.card-link > div:nth-child(2) > button:hover {
 .text-secondary {
   color: var(--tertiary);
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 .btn {
   border: 1.8px solid var(--white);
   border-radius: 8px;
@@ -223,7 +228,11 @@ div.card-link > div:nth-child(2) > button:hover {
   height: 16px;
 }
 
-div.card-body > p,
+.card-body {
+  display: flex;
+  flex-direction: column-reverse;
+}
+div.card-body > div,
 div.card-body > h3 {
   margin-top: 8px;
 }
