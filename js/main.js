@@ -114,8 +114,8 @@ function addBook() {
 
 function isValidUrl(url) {
     // simple regex pattern to check if the input is a valid URL
-    const urlPattern = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,.\/?%&=]*)?\.(png|jpg|jpeg)$/i;
-    return urlPattern.test(url);
+    const urlRegex = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,.\/?%&=]*)?\.(png|jpg|jpeg)$/i;
+    return urlRegex.test(url);
 }
 
 function generateId() {
@@ -189,27 +189,29 @@ function makeBook(bookObject) {
     cardContainer.setAttribute('id', `book-${bookObject.id}`);
     console.log('element dari article', cardContainer)
 
-
     // isCompleted is true
-    if (books.isCompleted) {
+    if (bookObject.isCompleted) {
         console.log('ini adlaah buku ketika SUDAH selesai dibaca');
-
         buttonContainer.append(readButton, markAsUnreadButton);
 
-        // markAsUnreadButton.addEventListener('click', function(){
-
-        // })
+        markAsUnreadButton.addEventListener('click', function () {
+            markAsUnread(bookObject.id);
+        })
 
         deleteButton.addEventListener('click', function () {
-            removeBookFromCompleted(books.id);
+            removeBookFromBookmark(bookObject.id);
         })
     } else {
         console.log('ini adlaah buku ketika BELUM selesai dibaca');
-
         buttonContainer.append(readButton, markAsReadButton);
 
         markAsReadButton.addEventListener('click', function () {
-            markAsRead(books.id);
+            markAsRead(bookObject.id);
+            console.log('buku telah ditandai sebagai markAsRead()');
+        })
+
+        deleteButton.addEventListener('click', function () {
+            removeBookFromBookmark(bookObject.id);
         })
     }
 
@@ -223,6 +225,7 @@ function markAsRead(bookId) {
 
     bookTarget.isCompleted = true;
     document.dispatchEvent(new Event(RENDER_EVENT));
+    console.log("nilai dari isCOmpleted setelah markAsReadButton diklik", bookTarget.isCompleted)
 }
 
 function findBook(bookId) {
@@ -232,6 +235,34 @@ function findBook(bookId) {
         }
     }
     return null;
+}
+
+function findBookIndex(bookId) {
+    for (const index in books) {
+        if (books[index].id === bookId) {
+            return index;
+        }
+    }
+
+    return -1;
+}
+
+function removeBookFromBookmark(bookId) {
+    const bookTarget = findBookIndex(bookId);
+
+    if (bookTarget === -1) return;
+    books.splice(bookTarget, 1);
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    console.log("buku telah dihapus")
+}
+
+function markAsUnread(bookId) {
+    const bookTarget = findBook(bookId);
+
+    if (bookTarget == null) return;
+    bookTarget.isCompleted = false;
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    console.log("ini adalah event dari markAsUnreadButton")
 }
 
 const books = [];
@@ -247,20 +278,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener(RENDER_EVENT, function () {
     console.log(books);
-    // Add a book mark as read
-    // addBookmarkAsRead
-
-    // const markAsRead = document.getElementById('books');
-    // markAsRead.innerHTML = '';
 
     const addBooksInLibrary = document.getElementById('books-library');
     addBooksInLibrary.innerHTML = '';
+
+    const addBookmarkAsRead = document.getElementById('mark-asRead');
+    addBookmarkAsRead.innerHTML = '';
 
     for (const bookItem of books) {
         const booksLibrary = makeBook(bookItem);
 
         if (!bookItem.isCompleted) {
             addBooksInLibrary.append(booksLibrary);
+        } else {
+            addBookmarkAsRead.append(booksLibrary);
         }
     }
 });
