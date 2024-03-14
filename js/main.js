@@ -114,7 +114,7 @@ function addBook() {
 
 function isValidUrl(url) {
     // simple regex pattern to check if the input is a valid URL
-    const urlPattern = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,.\/?%&=]*)?$/;
+    const urlPattern = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,.\/?%&=]*)?\.(png|jpg|jpeg)$/i;
     return urlPattern.test(url);
 }
 
@@ -140,7 +140,7 @@ function makeBook(bookObject) {
 
     const author = document.createElement('p');
     author.classList.add("text-paragraph-sm", "text-secondary", "capitalize")
-    author.innerText = bookObject.author;
+    author.innerText = bookObject.author + " • ";
 
     const year = document.createElement('p');
     year.classList.add("text-paragraph-sm", "text-secondary")
