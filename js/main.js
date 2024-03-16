@@ -10,14 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
         addBook();
     })
 
-    onLoadDefaultBook();
-
     if (isStorageExist()) {
         loadDataFromStorage();
     }
 })
 
 document.addEventListener(RENDER_EVENT, function () {
+    onLoadDefaultBook();
 
     const addBooksInLibrary = document.getElementById('books-library');
     addBooksInLibrary.innerHTML = '';
