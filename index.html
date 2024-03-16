@@ -23,35 +23,14 @@
             <header>
                <h2 class="text-20px text-primary font-bold">Library</h2>
             </header>
-            <div id="books-library" class="library-content">
-               <article class="card">
-                  <div class="card-header">
-                     <img
-                        src="https://comicvine.gamespot.com/a/uploads/scale_large/11161/111610434/9002817-6125859241-97840.jpg"
-                        alt="article1" />
-                     <div class="card-link">
-                        <button><i class="trash-icon"></i></button>
-                        <div class="flex flex-col-100">
-                           <button class="btn btn-sm text-white">Read</button>
-                           <button class="btn btn-sm text-white">
-                              Mark as read
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="card-body">
-                     <h3 class="text-paragraph font-bold text-primary">
-                        One Piece 1061
-                     </h3>
-                     <div class="flex gap-2">
-                        <p class="text-paragraph-sm text-secondary">
-                           Eiichiro Oda
-                        </p>
-                        <p class="text-paragraph-sm text-secondary">2022</p>
-                     </div>
-                  </div>
-               </article>
-            </div>
+            <div class="library-content" id="books-library"></div>
+         </section>
+
+         <section class="container">
+            <header>
+               <h2 class="text-20px text-primary font-bold">Mark As Read</h2>
+            </header>
+            <div class="library-content" id="mark-asRead"></div>
          </section>
 
          <section id="modal-added" class="layer_overlay">
@@ -145,5 +124,8 @@
       </footer>
 
       <script src="./js/main.js" type="text/javascript"></script>
+      <script src="./js/nav.js" type="text/javascript"></script>
+      <script src="./js/dom.js" type="text/javascript"></script>
+      <script src="./js/storage.js" type="text/javascript"></script>
    </body>
 </html>
