@@ -6,6 +6,7 @@ firstButton.classList.add('bottomMenuActive');
 firstButton.querySelector('i').style.filter = 'none';
 firstButton.style.backgroundColor = 'white';
 
+// dynamic hover & active navigation
 for (const button of buttons) {
     button.addEventListener('click', function () {
         const clickedButton = this;
@@ -41,12 +42,15 @@ for (const button of buttons) {
     });
 }
 
-// displays added modal
 const addModal = document.getElementById('modal-added')
 const addBtn = document.getElementById('add')
+const myLibrary = document.getElementById('myLibrary');
+const myArchive = document.getElementById('myArchive');
+const libraryBtn = document.getElementById('library')
+const markAsReadBtn = document.getElementById('markAsRead')
 const closeBtn = document.getElementById('close-btn')
-const bottomMenuActive = document.getElementById('add')
 const submitBtn = document.getElementById('formSubmitBtn')
+const bottomMenuActive = document.getElementById('add')
 
 addBtn.addEventListener('click', function () {
     addModal.classList.add('overlay-active');
@@ -55,10 +59,10 @@ addBtn.addEventListener('click', function () {
 closeBtn.addEventListener('click', function () {
     addModal.classList.remove('overlay-active');
 
-    buttons.forEach((btn) => {
-        btn.classList.remove('bottomMenuActive');
-        btn.querySelector('i').style.filter = initialFilterValue;
-    });
+    // buttons.forEach((btn) => {
+    //     btn.classList.remove('bottomMenuActive');
+    //     btn.querySelector('i').style.filter = initialFilterValue;
+    // });
 })
 
 submitBtn.addEventListener('click', function () {
@@ -81,3 +85,22 @@ window.onclick = function (e) {
         // });
     }
 }
+
+
+function toggleDisplay(idToShow, idToHide) {
+    const elementToShow = document.getElementById(idToShow);
+    const elementToHide = document.getElementById(idToHide);
+
+    elementToShow.style.display = 'block';
+    elementToHide.style.display = 'none';
+}
+
+toggleDisplay('myLibrary', 'myArchive');
+
+libraryBtn.addEventListener('click', function () {
+    toggleDisplay('myLibrary', 'myArchive');
+});
+
+markAsReadBtn.addEventListener('click', function () {
+    toggleDisplay('myArchive', 'myLibrary');
+});
