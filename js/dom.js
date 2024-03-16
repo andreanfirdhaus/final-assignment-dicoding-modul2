@@ -18,13 +18,14 @@ function addBook() {
     const author = document.getElementById('inputBookAuthor').value;
     const year = document.getElementById('inputBookYear').value;
     const imageUrlInput = document.getElementById('inputBookUrl').value;
+    const isCompleted = document.getElementById('inputBookIsCompleteToRead').checked;
 
     // check if imageUrlInput is a valid URL
     const isUrl = isValidUrl(imageUrlInput);
     const imageUrl = isUrl ? imageUrlInput : './assets/img/img404.jpg';
 
     const generatedID = generateId();
-    const bookObject = generateObjectBook(generatedID, title, author, year, imageUrl, false);
+    const bookObject = generateObjectBook(generatedID, title, author, year, imageUrl, isCompleted);
     books.push(bookObject);
     saveData();
 
@@ -224,8 +225,9 @@ function defaultBookData() {
 
 
 function onLoadDefaultBook() {
+    // Check if books have already been loaded
     if (books.length > 0) {
-        return;
+        return; // Prevent duplicate loading
     }
 
     const defaultBooks = defaultBookData();
