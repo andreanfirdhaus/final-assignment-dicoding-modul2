@@ -158,6 +158,18 @@ function findBookIndex(bookId) {
     return -1;
 }
 
+function searchBook(string) {
+    const getElement = document.querySelectorAll('.card');
+    for (const item of getElement) {
+        const title = item.childNodes[1];
+        if (title.innerText.toUpperCase().includes(string)) {
+            title.parentElement.style.display = "";
+        } else {
+            title.parentElement.style.display = "none";
+        }
+    }
+}
+
 function defaultBookData() {
     let bookIdCounter = 0;
     const generateUniqueId = () => generateId() + bookIdCounter++;
@@ -225,9 +237,8 @@ function defaultBookData() {
 
 
 function onLoadDefaultBook() {
-    // Check if books have already been loaded
     if (books.length > 0) {
-        return; // Prevent duplicate loading
+        return;
     }
 
     const defaultBooks = defaultBookData();
