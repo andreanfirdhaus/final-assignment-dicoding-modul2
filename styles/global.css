@@ -235,7 +235,8 @@ div.modal-content > header > button {
 .modal-content {
   background-color: var(--white);
   width: 536px;
-  height: 590px;
+  /* height: 590px; */
+  height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -266,7 +267,8 @@ fieldset:first-child > label {
   font-size: 14px;
   color: var(--tertiary);
 }
-fieldset:first-child > label > input {
+fieldset:first-child > label > input,
+form#searchInputForm > label > input {
   padding: 0 12px;
   height: 42px;
   width: 100%;
@@ -275,10 +277,15 @@ fieldset:first-child > label > input {
   border: 1.5px solid #cbd0d8;
   background-color: var(--white);
 }
-fieldset:first-child > label > input::placeholder {
+form#searchInputForm > label > input {
+  padding-left: 42px;
+}
+fieldset:first-child > label > input::placeholder,
+form#searchInputForm > label > input::placeholder {
   color: #cbd0d8;
 }
-fieldset:first-child > label > input:focus {
+fieldset:first-child > label > input:focus,
+form#searchInputForm > label > input:focus {
   outline: 1.5px solid var(--primary);
 }
 
@@ -292,6 +299,17 @@ input[type="checkbox"] {
   vertical-align: middle;
   width: 14px;
   height: 14px;
+}
+
+form#searchInputForm > span {
+  position: relative;
+}
+form#searchInputForm > span > button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  margin-left: 12px;
 }
 
 /* general class */
