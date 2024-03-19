@@ -8,6 +8,28 @@ document.addEventListener('DOMContentLoaded', function () {
     submitForm.addEventListener('submit', function (e) {
         e.preventDefault();
         addBook();
+
+        let isValid = true;
+
+        if (inputBookTitle.value.trim() === "") {
+            inputBookTitle.focus();
+            isValid = false;
+        }
+        if (inputBookAuthor.value.trim() === "") {
+            inputBookAuthor.focus();
+            isValid = false;
+        }
+        if (inputBookYear.value.trim() === "") {
+            inputBookYear.focus();
+            isValid = false;
+        }
+
+        if (isValid) {
+            addModal.classList.remove('overlay-active');
+            formReset.forEach(input => input.value = '');
+        }
+
+        return isValid;
     })
 
     document
@@ -21,19 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 searchModal.classList.remove('overlay-active');
             }
         });
-
-    // const searchInput = document.getElementById("searchBookInput");
-    // const searchButton = document.getElementById("searchButton");
-
-    // searchInput.addEventListener("keyup", (event) => {
-    //     const searchString = event.target.value.toUpperCase();
-    //     searchBook(searchString);
-
-    //     // Prevent default form submission behavior (if applicable)
-    //     if (event.key === 'Enter') {
-    //         event.preventDefault();
-    //     }
-    // });
 
     if (isStorageExist()) {
         loadDataFromStorage();

@@ -51,9 +51,11 @@ const myArchive = document.getElementById('myArchive');
 const libraryBtn = document.getElementById('library')
 const markAsReadBtn = document.getElementById('markAsRead')
 const closeBtn = document.querySelectorAll('.xmark-icon')
-const submitBtn = document.getElementById('formSubmitBtn')
 const bottomMenuActive = document.getElementById('add')
 const formReset = document.querySelectorAll('input')
+const inputBookTitle = document.getElementById('inputBookTitle');
+const inputBookAuthor = document.getElementById('inputBookAuthor');
+const inputBookYear = document.getElementById('inputBookYear');
 
 addBtn.addEventListener('click', function () {
     addModal.classList.add('overlay-active');
@@ -76,16 +78,6 @@ closeBtn.forEach(function (button) {
         }
     });
 });
-
-submitBtn.addEventListener('click', function () {
-    addModal.classList.remove('overlay-active');
-
-    // reset bottomMenuActive and filter on all buttons
-    // buttons.forEach((btn) => {
-    //     btn.classList.remove('bottomMenuActive');
-    //     btn.querySelector('i').style.filter = initialFilterValue;
-    // });
-})
 
 window.onclick = function (e) {
     if (e.target == addModal) {
