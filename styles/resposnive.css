@@ -1,11 +1,30 @@
-@media only screen and (max-width: 992px) {
-  body {
-    margin: 0 14px;
+@media (max-width: 480px) {
+  header div {
+    height: 60px;
   }
+  header a {
+    height: 30px;
+  }
+
+  .text-24px {
+    font-size: 24px;
+  }
+
   .library-content {
-    justify-content: center;
+    grid-gap: 1.525rem;
+  }
+
+  .modal-content {
+    width: 92%;
+    padding: 24px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 481px) and (max-width: 768px) {
+  .library-content {
+    grid-gap: 1.6rem;
+  }
+  .modal-content {
+    width: 70%;
+  }
 }

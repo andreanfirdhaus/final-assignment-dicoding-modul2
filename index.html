@@ -3,70 +3,48 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+      <title>Booklis</title>
       <link rel="stylesheet" href="./styles/global.css" />
       <link rel="stylesheet" href="./styles/resposnive.css" />
-      <title>booklis</title>
    </head>
    <body>
       <header>
          <div class="container">
             <a href="/">
                <img src="./assets/icon/logo.svg" alt="logo" draggable="false" />
-               <h1 class="text-24px font-extrabold">booklis.</h1>
+               <h1 class="text-24px font-extrabold">Booklis</h1>
             </a>
          </div>
       </header>
 
       <main>
-         <section class="container">
+         <section class="container" id="myLibrary">
             <header>
                <h2 class="text-20px text-primary font-bold">Library</h2>
             </header>
-            <div id="books-library" class="library-content">
-               <article class="card">
-                  <div class="card-header">
-                     <img
-                        src="https://images.tokopedia.net/img/cache/700/hDjmkQ/2022/9/29/0f257359-f33f-4ff5-8781-f82f8a763ce0.jpg"
-                        alt="article1" />
-                     <div class="card-link">
-                        <button><i class="trash-icon"></i></button>
-                        <div class="flex flex-col-100">
-                           <button class="btn btn-sm text-white">Read</button>
-                           <button class="btn btn-sm text-white">
-                              Mark as read
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="card-body">
-                     <h3 class="text-paragraph font-bold text-primary">
-                        Everything Is F Cked
-                     </h3>
-                     <div class="flex gap-2">
-                        <p class="text-paragraph-sm text-secondary">
-                           Mark Manson
-                        </p>
-                        <p class="text-paragraph-sm text-secondary">2019</p>
-                     </div>
-                  </div>
-               </article>
-            </div>
+            <div class="library-content" id="books-library"></div>
+         </section>
+
+         <section class="container" id="myArchive">
+            <header>
+               <h2 class="text-20px text-primary font-bold">Mark As Read</h2>
+            </header>
+            <div class="library-content" id="mark-asRead"></div>
          </section>
 
          <section id="modal-added" class="layer_overlay">
             <div class="modal-content">
                <header>
                   <h2 class="text-20px text-primary font-bold">Add Book</h2>
-                  <button id="close-btn">
+                  <button>
                      <i class="xmark-icon"></i>
                   </button>
                </header>
                <form action="" id="formInputBook">
                   <!-- form input type text-->
                   <fieldset>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookTitle"
+                     <label class="text-14px font-bold" for="inputBookTitle"
                         >Title
                         <input
                            type="text"
@@ -74,9 +52,7 @@
                            placeholder="title"
                            required />
                      </label>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookAuthor"
+                     <label class="text-14px font-bold" for="inputBookAuthor"
                         >Author
                         <input
                            type="text"
@@ -84,9 +60,7 @@
                            placeholder="author"
                            required />
                      </label>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookYear"
+                     <label class="text-14px font-bold" for="inputBookYear"
                         >Year
                         <input
                            type="number"
@@ -94,9 +68,7 @@
                            placeholder="year"
                            required />
                      </label>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookUrl"
+                     <label class="text-14px font-bold" for="inputBookUrl"
                         >Picture (optional)
                         <input
                            type="text"
@@ -122,6 +94,28 @@
                </form>
             </div>
          </section>
+
+         <section id="modal-search" class="layer_overlay">
+            <div class="modal-content">
+               <header>
+                  <h2 class="text-20px text-primary font-bold">Search Book</h2>
+                  <button>
+                     <i class="xmark-icon"></i>
+                  </button>
+               </header>
+               <form action="" id="searchInputForm">
+                  <span
+                     ><button type="button"><i class="search-icon"></i></button
+                  ></span>
+                  <label for="searchBookInput">
+                     <input
+                        type="text"
+                        id="searchBookInput"
+                        placeholder="Search..." />
+                  </label>
+               </form>
+            </div>
+         </section>
       </main>
 
       <footer>
@@ -131,7 +125,7 @@
                   <button id="library"><i class="library-icon"></i></button>
                </li>
                <li>
-                  <button id="complate"><i class="read-icon"></i></button>
+                  <button id="markAsRead"><i class="read-icon"></i></button>
                </li>
                <li>
                   <button id="add"><i class="add-icon"></i></button>
@@ -144,5 +138,8 @@
       </footer>
 
       <script src="./js/main.js" type="text/javascript"></script>
+      <script src="./js/menu.js" type="text/javascript"></script>
+      <script src="./js/dom.js" type="text/javascript"></script>
+      <script src="./js/storage.js" type="text/javascript"></script>
    </body>
 </html>
