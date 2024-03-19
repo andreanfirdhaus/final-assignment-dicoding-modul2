@@ -43,27 +43,39 @@ for (const button of buttons) {
 }
 
 const addModal = document.getElementById('modal-added')
+const searchModal = document.getElementById('modal-search')
 const addBtn = document.getElementById('add')
+const searchBtn = document.getElementById('search')
 const myLibrary = document.getElementById('myLibrary');
 const myArchive = document.getElementById('myArchive');
 const libraryBtn = document.getElementById('library')
 const markAsReadBtn = document.getElementById('markAsRead')
-const closeBtn = document.getElementById('close-btn')
+const closeBtn = document.querySelectorAll('.xmark-icon')
 const submitBtn = document.getElementById('formSubmitBtn')
 const bottomMenuActive = document.getElementById('add')
+const formReset = document.querySelectorAll('input')
 
 addBtn.addEventListener('click', function () {
     addModal.classList.add('overlay-active');
 })
-
-closeBtn.addEventListener('click', function () {
-    addModal.classList.remove('overlay-active');
-
-    // buttons.forEach((btn) => {
-    //     btn.classList.remove('bottomMenuActive');
-    //     btn.querySelector('i').style.filter = initialFilterValue;
-    // });
+searchBtn.addEventListener('click', function () {
+    searchModal.classList.add('overlay-active');
 })
+
+closeBtn.forEach(function (button) {
+    button.addEventListener('click', () => {
+        const check = button.closest('.layer_overlay');
+
+        if (check === addModal) {
+            addModal.classList.remove('overlay-active');
+            formReset.forEach(input => input.value = '');
+        }
+
+        if (check === searchModal) {
+            searchModal.classList.remove('overlay-active');
+        }
+    });
+});
 
 submitBtn.addEventListener('click', function () {
     addModal.classList.remove('overlay-active');
@@ -83,6 +95,10 @@ window.onclick = function (e) {
         //     btn.classList.remove('bottomMenuActive');
         //     btn.querySelector('i').style.filter = initialFilterValue;
         // });
+    }
+
+    if (e.target === searchModal) {
+        searchModal.classList.remove('overlay-active');
     }
 }
 
