@@ -37,16 +37,14 @@
             <div class="modal-content">
                <header>
                   <h2 class="text-20px text-primary font-bold">Add Book</h2>
-                  <button id="close-btn">
+                  <button>
                      <i class="xmark-icon"></i>
                   </button>
                </header>
                <form action="" id="formInputBook">
                   <!-- form input type text-->
                   <fieldset>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookTitle"
+                     <label class="text-14px font-bold" for="inputBookTitle"
                         >Title
                         <input
                            type="text"
@@ -54,9 +52,7 @@
                            placeholder="title"
                            required />
                      </label>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookAuthor"
+                     <label class="text-14px font-bold" for="inputBookAuthor"
                         >Author
                         <input
                            type="text"
@@ -64,9 +60,7 @@
                            placeholder="author"
                            required />
                      </label>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookYear"
+                     <label class="text-14px font-bold" for="inputBookYear"
                         >Year
                         <input
                            type="number"
@@ -74,9 +68,7 @@
                            placeholder="year"
                            required />
                      </label>
-                     <label
-                        class="text-14px font-bold text-primary"
-                        for="inputBookUrl"
+                     <label class="text-14px font-bold" for="inputBookUrl"
                         >Picture (optional)
                         <input
                            type="text"
@@ -99,6 +91,28 @@
                   <button type="submit" id="formSubmitBtn" class="font-bold">
                      Add
                   </button>
+               </form>
+            </div>
+         </section>
+
+         <section id="modal-search" class="layer_overlay">
+            <div class="modal-content">
+               <header>
+                  <h2 class="text-20px text-primary font-bold">Search Book</h2>
+                  <button>
+                     <i class="xmark-icon"></i>
+                  </button>
+               </header>
+               <form action="" id="searchInputForm">
+                  <span
+                     ><button type="button"><i class="search-icon"></i></button
+                  ></span>
+                  <label for="searchBookInput">
+                     <input
+                        type="text"
+                        id="searchBookInput"
+                        placeholder="Search..." />
+                  </label>
                </form>
             </div>
          </section>
