@@ -87,7 +87,7 @@ header div {
 }
 
 header a {
-  height: 32px;
+  height: 28px;
   color: var(--primary);
   align-self: center;
   display: flex;
@@ -102,7 +102,7 @@ section.container > header {
 section.container > div {
   margin-bottom: 52px;
 }
-.library-content {
+.book-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(142px, 1fr));
   /* grid-gap: 1.675rem; */
@@ -199,7 +199,7 @@ footer nav ul li > button {
 }
 
 /* modal-section */
-.layer_overlay {
+.layer-overlay {
   background-color: rgba(36, 43, 51, 0.6);
   backdrop-filter: blur(2px);
   display: none;
@@ -328,7 +328,7 @@ form#searchInputForm > span > button {
 }
 
 .text-24px {
-  font-size: 26px;
+  font-size: 24px;
 }
 .text-20px {
   font-size: 20px;

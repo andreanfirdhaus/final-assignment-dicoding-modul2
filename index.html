@@ -13,27 +13,27 @@
          <div class="container">
             <a href="/">
                <img src="./assets/icon/logo.svg" alt="logo" draggable="false" />
-               <h1 class="text-24px font-extrabold">Booklis</h1>
+               <h1 class="text-24px font-extrabold">BOOKLIS</h1>
             </a>
          </div>
       </header>
 
       <main>
-         <section class="container" id="myLibrary">
+         <section class="container" id="reading-shelf">
             <header>
-               <h2 class="text-20px text-primary font-bold">Library</h2>
+               <h2 class="text-20px text-primary font-bold">Reading Shelf</h2>
             </header>
-            <div class="library-content" id="books-library"></div>
+            <div class="book-list" id="books-reading"></div>
          </section>
 
-         <section class="container" id="myArchive">
+         <section class="container" id="finished-reads">
             <header>
-               <h2 class="text-20px text-primary font-bold">Mark As Read</h2>
+               <h2 class="text-20px text-primary font-bold">Finished Reads</h2>
             </header>
-            <div class="library-content" id="mark-asRead"></div>
+            <div class="book-list" id="books-finished"></div>
          </section>
 
-         <section id="modal-added" class="layer_overlay">
+         <section id="modal-added" class="layer-overlay">
             <div class="modal-content">
                <header>
                   <h2 class="text-20px text-primary font-bold">Add Book</h2>
@@ -41,7 +41,7 @@
                      <i class="xmark-icon"></i>
                   </button>
                </header>
-               <form action="" id="formInputBook">
+               <form id="formInputBook">
                   <!-- form input type text-->
                   <fieldset>
                      <label class="text-14px font-bold" for="inputBookTitle"
@@ -96,7 +96,7 @@
             </div>
          </section>
 
-         <section id="modal-search" class="layer_overlay">
+         <section id="modal-search" class="layer-overlay">
             <div class="modal-content">
                <header>
                   <h2 class="text-20px text-primary font-bold">Search Book</h2>
@@ -104,7 +104,7 @@
                      <i class="xmark-icon"></i>
                   </button>
                </header>
-               <form action="" id="searchInputForm">
+               <form id="searchInputForm">
                   <span
                      ><button type="button"><i class="search-icon"></i></button
                   ></span>

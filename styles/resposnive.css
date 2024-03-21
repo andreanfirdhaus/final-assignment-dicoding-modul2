@@ -10,7 +10,7 @@
     font-size: 24px;
   }
 
-  .library-content {
+  .book-list {
     grid-gap: 1.525rem;
   }
 
@@ -21,7 +21,7 @@
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  .library-content {
+  .book-list {
     grid-gap: 1.6rem;
   }
   .modal-content {

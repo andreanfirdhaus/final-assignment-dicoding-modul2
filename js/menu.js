@@ -46,8 +46,6 @@ const addModal = document.getElementById('modal-added')
 const searchModal = document.getElementById('modal-search')
 const addBtn = document.getElementById('add')
 const searchBtn = document.getElementById('search')
-const myLibrary = document.getElementById('myLibrary');
-const myArchive = document.getElementById('myArchive');
 const libraryBtn = document.getElementById('library')
 const markAsReadBtn = document.getElementById('markAsRead')
 const closeBtn = document.querySelectorAll('.xmark-icon')
@@ -66,7 +64,7 @@ searchBtn.addEventListener('click', function () {
 
 closeBtn.forEach(function (button) {
     button.addEventListener('click', () => {
-        const check = button.closest('.layer_overlay');
+        const check = button.closest('.layer-overlay');
 
         if (check === addModal) {
             addModal.classList.remove('overlay-active');
@@ -103,12 +101,12 @@ function toggleDisplay(idToShow, idToHide) {
     elementToHide.style.display = 'none';
 }
 
-toggleDisplay('myLibrary', 'myArchive');
+toggleDisplay('reading-shelf', 'finished-reads');
 
 libraryBtn.addEventListener('click', function () {
-    toggleDisplay('myLibrary', 'myArchive');
+    toggleDisplay('reading-shelf', 'finished-reads');
 });
 
 markAsReadBtn.addEventListener('click', function () {
-    toggleDisplay('myArchive', 'myLibrary');
+    toggleDisplay('finished-reads', 'reading-shelf');
 });

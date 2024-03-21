@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener(RENDER_EVENT, function () {
     onLoadDefaultBook();  // uncomment to hide default data
 
-    const addBooksInLibrary = document.getElementById('books-library');
+    const addBooksInLibrary = document.getElementById('books-reading');
     addBooksInLibrary.innerHTML = '';
 
-    const addBookmarkAsRead = document.getElementById('mark-asRead');
+    const addBookmarkAsRead = document.getElementById('books-finished');
     addBookmarkAsRead.innerHTML = '';
 
     for (const bookItem of books) {
