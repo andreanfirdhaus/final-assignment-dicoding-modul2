@@ -1,7 +1,7 @@
 const books = [];
 const RENDER_EVENT = "render-book";
 
-console.log("default data array", books)
+console.log("default data: ", books)
 
 document.addEventListener('DOMContentLoaded', function () {
     const submitForm = document.getElementById('formInputBook');

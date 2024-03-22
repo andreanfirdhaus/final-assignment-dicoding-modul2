@@ -96,7 +96,7 @@ function makeBook(bookObject) {
         })
 
         deleteButton.addEventListener('click', function () {
-            removeBookFromBookmark(bookObject.id);
+            removeBook(bookObject.id);
         })
 
     } else {
@@ -106,7 +106,7 @@ function makeBook(bookObject) {
         })
 
         deleteButton.addEventListener('click', function () {
-            removeBookFromBookmark(bookObject.id);
+            removeBook(bookObject.id);
         })
     }
 
@@ -131,7 +131,7 @@ function markAsUnread(bookId) {
     saveData();
 }
 
-function removeBookFromBookmark(bookId) {
+function removeBook(bookId) {
     const bookTarget = findBookIndex(bookId);
 
     if (bookTarget === -1) return;

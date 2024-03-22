@@ -1,7 +1,6 @@
 const SAVED_EVENT = 'saved-books';
 const STORAGE_KEY = 'bookObject';
 
-
 function saveData() {
     if (isStorageExist()) {
         const parsed = JSON.stringify(books);
@@ -21,7 +20,7 @@ function isStorageExist() {
 
 function loadDataFromStorage() {
     const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    console.log("default nilai books[] dari localstorage=", data)
+    console.log("default nilai books[] dari localStorage: ", data);
 
     if (data !== null) {
         for (const book of data) {
