@@ -1,59 +1,47 @@
+const addModal = document.getElementById('modal-added');
+const searchModal = document.getElementById('modal-search');
+const addBtn = document.getElementById('add');
+const searchBtn = document.getElementById('search');
+const libraryBtn = document.getElementById('library');
+const markAsReadBtn = document.getElementById('complete');
+const closeBtn = document.querySelectorAll('.xmark-icon');
+const isActive = document.getElementById('add');
+const formReset = document.querySelectorAll('input');
+const inputBookTitle = document.getElementById('inputBookTitle');
+const inputBookAuthor = document.getElementById('inputBookAuthor');
+const inputBookYear = document.getElementById('inputBookYear');
 const initialFilterValue = 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(115%) contrast(100%)';
-
 const buttons = document.querySelectorAll('footer nav li button');
-const firstButton = buttons[0];
-firstButton.classList.add('bottomMenuActive');
-firstButton.querySelector('i').style.filter = 'none';
-firstButton.style.backgroundColor = 'white';
 
-// dynamic hover & active navigation
-for (const button of buttons) {
-    button.addEventListener('click', function () {
-        const clickedButton = this;
-
-        buttons.forEach((btn) => {
-            btn.classList.remove('bottomMenuActive');
-            btn.style.backgroundColor = '';
-            btn.querySelector('i').style.filter = initialFilterValue;
-        });
-
-        // apply "bottomMenuActive" class only to the clicked button
-        clickedButton.classList.add('bottomMenuActive');
-
-        // reset filter on all buttons
-        buttons.forEach((btn) => {
-            btn.querySelector('i').style.filter = initialFilterValue;
-        });
-
-        // add icon filter on click (the filter set to be 'none')
-        clickedButton.querySelector('i').style.filter = 'none';
+function setActiveButton(button) {
+    buttons.forEach(btn => {
+        btn.classList.remove('isActive');
+        btn.style.backgroundColor = '';
+        btn.querySelector('i').style.filter = initialFilterValue;
     });
 
-    // hover effect event. (when bottom menu is hovered over then the filter icon will be set to 'none')
+    button.classList.add('isActive');
+    button.style.backgroundColor = 'white';
+    button.querySelector('i').style.filter = 'none';
+}
+
+buttons.forEach(button => {
+    button.addEventListener('click', function () {
+        setActiveButton(this);
+    });
+
     button.addEventListener('mouseenter', function () {
         this.querySelector('i').style.filter = 'none';
     });
 
-    // (when the mouse leaves from the icon)
     button.addEventListener('mouseleave', function () {
-        if (!this.classList.contains('bottomMenuActive')) {
+        if (!this.classList.contains('isActive')) {
             this.querySelector('i').style.filter = initialFilterValue;
         }
     });
-}
+});
 
-const addModal = document.getElementById('modal-added')
-const searchModal = document.getElementById('modal-search')
-const addBtn = document.getElementById('add')
-const searchBtn = document.getElementById('search')
-const libraryBtn = document.getElementById('library')
-const markAsReadBtn = document.getElementById('complete')
-const closeBtn = document.querySelectorAll('.xmark-icon')
-const bottomMenuActive = document.getElementById('add')
-const formReset = document.querySelectorAll('input')
-const inputBookTitle = document.getElementById('inputBookTitle');
-const inputBookAuthor = document.getElementById('inputBookAuthor');
-const inputBookYear = document.getElementById('inputBookYear');
+setActiveButton(buttons[0]);
 
 addBtn.addEventListener('click', function () {
     addModal.classList.add('overlay-active');
@@ -80,18 +68,12 @@ closeBtn.forEach(function (button) {
 window.onclick = function (e) {
     if (e.target == addModal) {
         addModal.classList.remove('overlay-active');
-        // reset bottomMenuActive and filter on all buttons
-        // buttons.forEach((btn) => {
-        //     btn.classList.remove('bottomMenuActive');
-        //     btn.querySelector('i').style.filter = initialFilterValue;
-        // });
     }
 
     if (e.target === searchModal) {
         searchModal.classList.remove('overlay-active');
     }
 }
-
 
 function toggleDisplay(idToShow, idToHide) {
     const elementToShow = document.getElementById(idToShow);
