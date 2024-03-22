@@ -80,10 +80,12 @@ input {
   font-weight: 500;
 }
 
-/* logo container */
-header div {
-  height: 72px;
+/* header container */
+header > div.container {
+  height: 64px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header a {
@@ -92,6 +94,26 @@ header a {
   align-self: center;
   display: flex;
   gap: 4px;
+  align-items: center;
+}
+header a > img {
+  height: 28px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+div.user-info > p {
+  color: var(--tertiary);
+  font-size: 14px;
+  letter-spacing: 0.025em;
+}
+div.user-info > img {
+  cursor: pointer;
+  height: 36px;
+  border-radius: 50px;
 }
 
 section.container > header {
@@ -407,8 +429,8 @@ form#searchInputForm > span > button {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(115%)
     contrast(100%);
 }
-.read-icon {
-  background-image: url(../assets/icon/read.svg);
+.complete-icon {
+  background-image: url(../assets/icon/complete.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: inline-block;
@@ -434,4 +456,12 @@ form#searchInputForm > span > button {
   display: inline-block;
   width: 16px;
   height: 16px;
+}
+.notification-icon {
+  background-image: url(../assets/icon/notification.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
 }

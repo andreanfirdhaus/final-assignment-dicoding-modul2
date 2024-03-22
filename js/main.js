@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document
         .getElementById("searchBookInput")
         .addEventListener("keydown", (e) => {
-            const searchString = e.target.value.toUpperCase();
+            const searchString = e.target.value.toUpperCase().trim();
             searchBook(searchString);
 
             if (e.key === 'Enter') {
@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener(RENDER_EVENT, function () {
     onLoadDefaultBook();  // uncomment to hide default data
 
-    const addBooksInLibrary = document.getElementById('books-reading');
+    const addBooksInLibrary = document.getElementById('incompleteBookList');
     addBooksInLibrary.innerHTML = '';
 
-    const addBookmarkAsRead = document.getElementById('books-finished');
+    const addBookmarkAsRead = document.getElementById('completeBookList');
     addBookmarkAsRead.innerHTML = '';
 
     for (const bookItem of books) {

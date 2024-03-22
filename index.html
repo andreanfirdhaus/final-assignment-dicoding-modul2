@@ -4,7 +4,7 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-      <title>Booklis</title>
+      <title>bookshelf</title>
       <link rel="stylesheet" href="./styles/global.css" />
       <link rel="stylesheet" href="./styles/resposnive.css" />
    </head>
@@ -13,24 +13,29 @@
          <div class="container">
             <a href="/">
                <img src="./assets/icon/logo.svg" alt="logo" draggable="false" />
-               <h1 class="text-24px font-extrabold">BOOKLIS</h1>
+               <h1 class="text-24px font-extrabold">bookshelf</h1>
             </a>
+            <div class="user-info">
+               <p>howdy, diana</p>
+               <img src="./assets/img/avatar.jpg" alt="abcdefg" />
+               <button><i class="notification-icon"></i></button>
+            </div>
          </div>
       </header>
 
       <main>
-         <section class="container" id="reading-shelf">
+         <section id="incompleteBookshelf" class="container">
             <header>
-               <h2 class="text-20px text-primary font-bold">Reading Shelf</h2>
+               <h2 class="text-20px text-primary font-bold">My Book</h2>
             </header>
-            <div class="book-list" id="books-reading"></div>
+            <div id="incompleteBookList" class="book-list"></div>
          </section>
 
-         <section class="container" id="finished-reads">
+         <section id="completeBookshelf" class="container">
             <header>
-               <h2 class="text-20px text-primary font-bold">Finished Reads</h2>
+               <h2 class="text-20px text-primary font-bold">Books I've Read</h2>
             </header>
-            <div class="book-list" id="books-finished"></div>
+            <div id="completeBookList" class="book-list"></div>
          </section>
 
          <section id="modal-added" class="layer-overlay">
@@ -126,7 +131,7 @@
                   <button id="library"><i class="library-icon"></i></button>
                </li>
                <li>
-                  <button id="markAsRead"><i class="read-icon"></i></button>
+                  <button id="complete"><i class="complete-icon"></i></button>
                </li>
                <li>
                   <button id="add"><i class="add-icon"></i></button>

@@ -47,7 +47,7 @@ const searchModal = document.getElementById('modal-search')
 const addBtn = document.getElementById('add')
 const searchBtn = document.getElementById('search')
 const libraryBtn = document.getElementById('library')
-const markAsReadBtn = document.getElementById('markAsRead')
+const markAsReadBtn = document.getElementById('complete')
 const closeBtn = document.querySelectorAll('.xmark-icon')
 const bottomMenuActive = document.getElementById('add')
 const formReset = document.querySelectorAll('input')
@@ -101,12 +101,12 @@ function toggleDisplay(idToShow, idToHide) {
     elementToHide.style.display = 'none';
 }
 
-toggleDisplay('reading-shelf', 'finished-reads');
+toggleDisplay('incompleteBookshelf', 'completeBookshelf');
 
 libraryBtn.addEventListener('click', function () {
-    toggleDisplay('reading-shelf', 'finished-reads');
+    toggleDisplay('incompleteBookshelf', 'completeBookshelf');
 });
 
 markAsReadBtn.addEventListener('click', function () {
-    toggleDisplay('finished-reads', 'reading-shelf');
+    toggleDisplay('completeBookshelf', 'incompleteBookshelf');
 });
