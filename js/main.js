@@ -1,19 +1,41 @@
 const books = [];
 const RENDER_EVENT = "render-book";
 
-console.log("default data array", books)
+console.log("default data: ", books)
 
 document.addEventListener('DOMContentLoaded', function () {
     const submitForm = document.getElementById('formInputBook');
     submitForm.addEventListener('submit', function (e) {
         e.preventDefault();
         addBook();
+
+        let isValid = true;
+
+        if (inputBookTitle.value.trim() === "") {
+            inputBookTitle.focus();
+            isValid = false;
+        }
+        if (inputBookAuthor.value.trim() === "") {
+            inputBookAuthor.focus();
+            isValid = false;
+        }
+        if (inputBookYear.value.trim() === "") {
+            inputBookYear.focus();
+            isValid = false;
+        }
+
+        if (isValid) {
+            addModal.classList.remove('overlay-active');
+            formReset.forEach(input => input.value = '');
+        }
+
+        return isValid;
     })
 
     document
         .getElementById("searchBookInput")
         .addEventListener("keydown", (e) => {
-            const searchString = e.target.value.toUpperCase();
+            const searchString = e.target.value.toUpperCase().trim();
             searchBook(searchString);
 
             if (e.key === 'Enter') {
@@ -21,19 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 searchModal.classList.remove('overlay-active');
             }
         });
-
-    // const searchInput = document.getElementById("searchBookInput");
-    // const searchButton = document.getElementById("searchButton");
-
-    // searchInput.addEventListener("keyup", (event) => {
-    //     const searchString = event.target.value.toUpperCase();
-    //     searchBook(searchString);
-
-    //     // Prevent default form submission behavior (if applicable)
-    //     if (event.key === 'Enter') {
-    //         event.preventDefault();
-    //     }
-    // });
 
     if (isStorageExist()) {
         loadDataFromStorage();
@@ -43,10 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener(RENDER_EVENT, function () {
     onLoadDefaultBook();  // uncomment to hide default data
 
-    const addBooksInLibrary = document.getElementById('books-library');
+    const addBooksInLibrary = document.getElementById('incompleteBookList');
     addBooksInLibrary.innerHTML = '';
 
-    const addBookmarkAsRead = document.getElementById('mark-asRead');
+    const addBookmarkAsRead = document.getElementById('completeBookList');
     addBookmarkAsRead.innerHTML = '';
 
     for (const bookItem of books) {
