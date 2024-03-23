@@ -7,12 +7,6 @@ function generateId() {
     return +new Date();
 }
 
-function generateObjectBook(id, title, author, year, imageUrl, isCompleted) {
-    return {
-        id, title, author, year, imageUrl, isCompleted
-    }
-}
-
 function addBook() {
     const title = document.getElementById('inputBookTitle').value;
     const author = document.getElementById('inputBookAuthor').value;
@@ -24,8 +18,15 @@ function addBook() {
     const isUrl = isValidUrl(imageUrlInput);
     const imageUrl = isUrl ? imageUrlInput : './assets/img/img404.jpg';
 
-    const generatedID = generateId();
-    const bookObject = generateObjectBook(generatedID, title, author, year, imageUrl, isCompleted);
+    const bookObject = {
+        id: +new Date(),
+        title: title,
+        author: author,
+        year: parseInt(year),
+        imageUrl: imageUrl,
+        isCompleted: isCompleted
+    }
+    console.log("tipe data year:", typeof bookObject.year);
     books.push(bookObject);
     saveData();
 
