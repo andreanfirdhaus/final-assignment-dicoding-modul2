@@ -11,3 +11,5 @@
 - [x] Responsive web design.
 
 notes: aplikasi rak-buku ini memiliki nilai default yang nantinya akan tersimpan secara otomatis pada penyimpanan localStorage ketika user menambahkan buku atau memindahkannya ke rak lain.
+
+![alt text](./design-ui.jpg)
