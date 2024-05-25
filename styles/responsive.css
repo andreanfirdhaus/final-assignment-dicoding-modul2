@@ -1,9 +1,7 @@
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   div.user-info > p {
     display: none;
   }
-}
-@media (max-width: 480px) {
   header div {
     height: 60px;
   }
@@ -31,5 +29,11 @@
   }
   .modal-content {
     width: 70%;
+  }
+}
+
+@media (min-width: 769px) {
+  .book-list {
+    grid-gap: 2.16rem;
   }
 }
